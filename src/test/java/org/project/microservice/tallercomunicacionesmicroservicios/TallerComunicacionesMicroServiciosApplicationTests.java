@@ -1,4 +1,4 @@
-package org.project.sura.tallercomunicacionesmicroservicios;
+package org.project.microservice.tallercomunicacionesmicroservicios;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

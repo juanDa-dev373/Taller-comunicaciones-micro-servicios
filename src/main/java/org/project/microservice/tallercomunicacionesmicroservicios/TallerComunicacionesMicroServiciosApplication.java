@@ -1,4 +1,4 @@
-package org.project.sura.tallercomunicacionesmicroservicios;
+package org.project.microservice.tallercomunicacionesmicroservicios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
