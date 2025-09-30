@@ -1,5 +1,56 @@
+server:
+  port: 8080
 spring:
   application:
-    name: "Taller-comunicaciones-micro-servicios"
+    name: "ms-notification"
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: notificationms12@gmail.com
+    password: mpgh lgtw bjef voue
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5434/notificationdb
+    username: postgres
+    password: post1234
+    pool:
+      enabled: true
+      initial-size: 5
+      max-size: 20
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  webflux:
+    base-path: /api
 
+app:
+  async:
+    app:
+      brokerType: rabbitmq
+      createTopology: true
+      domain:
+        events:
+          exchange: events.topic
+          eventsSuffix: subsEvents
+          notificationSuffix: notification
+      direct:
+        exchange: directMessages
+      connectionProperties:
+        host: ${RABBIT_HOST:localhost}
+        port: ${RABBIT_PORT:5672}
+        username: ${RABBIT_USER:admin}
+        password: ${RABBIT_PASS:admin}
+        virtualHost: ${RABBIT_VHOST:auth}
 
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui
