@@ -1,7 +1,5 @@
 package org.project.microservice.tallercomunicacionesmicroservicios.application;
 
-import org.project.microservice.tallercomunicacionesmicroservicios.domain.model.notification.Notification;
-import org.project.microservice.tallercomunicacionesmicroservicios.domain.usecase.NotificationUseCase;
 import org.project.microservice.tallercomunicacionesmicroservicios.infrastructure.entry_points.listener.NotificationEventListener;
 import org.project.microservice.tallercomunicacionesmicroservicios.infrastructure.entry_points.listener.request.SendNotificationRequest;
 import org.reactivecommons.async.api.HandlerRegistry;
@@ -16,7 +14,7 @@ public class MessagingConfig {
     @Primary
     public HandlerRegistry handlerRegistry(NotificationEventListener listener) {
         return HandlerRegistry.register()
-                .listenEvent("notification.", listener::sendNotification, SendNotificationRequest.class);
+                .listenEvent("notification.requested", listener::sendNotification, SendNotificationRequest.class);
     }
 
 

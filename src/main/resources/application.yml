@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${HOST_PORT:8080}
 spring:
   application:
     name: "ms-notification"
@@ -16,9 +16,9 @@ spring:
             required: true
           auth: true
   r2dbc:
-    url: r2dbc:postgresql://localhost:5434/notificationdb
-    username: postgres
-    password: post1234
+    url: r2dbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5434}/${DB_NAME:notificationdb}
+    username: ${DB_USER:postgrest}
+    password: ${DB_PASSWORD:post1234}
     pool:
       enabled: true
       initial-size: 5
@@ -45,9 +45,9 @@ app:
       connectionProperties:
         host: ${RABBIT_HOST:localhost}
         port: ${RABBIT_PORT:5672}
-        username: ${RABBIT_USER:admin}
-        password: ${RABBIT_PASS:admin}
-        virtualHost: ${RABBIT_VHOST:auth}
+        username: ${RABBIT_USER:ms-notification}
+        password: ${RABBIT_PASS:noti123}
+        virtualHost: ${RABBIT_VHOST:micro}
 
 springdoc:
   api-docs:
